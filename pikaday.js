@@ -69,6 +69,28 @@
         return (' ' + el.className + ' ').indexOf(' ' + cn + ' ') !== -1;
     },
 
+    /**
+     * Recursively climbs the document tree until we find a the parent of the given element that has the given tag name.
+     * This is used when listening for clicks on elements that are inside a button for example.
+     * If we get to the body, just return false;
+     *
+     * @param el
+     * @param parentTagName
+     * @returns {*}
+     */
+    getParentByTagName = function (el, parentTagName)
+    {
+        if (el.tagName === parentTagName) {
+            return el;
+        }
+
+        if (el.tagName === 'BODY') {
+            return false;
+        }
+
+        return getParentByTagName(el.parentNode, parentTagName);
+    },
+
     addClass = function(el, cn)
     {
         if (!hasClass(el, cn)) {
@@ -458,10 +480,18 @@
         }
 
         if (c === 0) {
-            html += '<button class="pika-prev' + (prev ? '' : ' is-disabled') + '" type="button">' + opts.i18n.previousMonth + '</button>';
+            html += '<button class="pika-prev' + (prev ? '' : ' is-disabled') + '" type="button"> ' +
+                        '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+                            '<path class="stroke-current" d="M10.3996 12.8L5.59961 7.99995L10.3996 3.19995" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+                        '</svg> ' +
+                '</button>';
         }
         if (c === (instance._o.numberOfMonths - 1) ) {
-            html += '<button class="pika-next' + (next ? '' : ' is-disabled') + '" type="button">' + opts.i18n.nextMonth + '</button>';
+            html += '<button class="pika-next' + (next ? '' : ' is-disabled') + '" type="button">' +
+                        '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+                            '<path class="stroke-current" d="M5.59998 12.8L10.4 7.99995L5.59998 3.19995" stroke="#0054C2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+                        '</svg>' +
+                '</button>';
         }
 
         return html += '</div>';
@@ -487,8 +517,17 @@
                 return;
             }
             e = e || window.event;
+
             var target = e.target || e.srcElement;
             if (!target) {
+                return;
+            }
+
+            if (target.tagName === 'svg' || target.tagName === 'path') {
+                target = getParentByTagName(target, 'BUTTON');
+            }
+
+            if (! target) {
                 return;
             }
 
