@@ -76,8 +76,13 @@ $pd-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 }
 
 .pika-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     position: relative;
     text-align: center;
+
 
     select {
         cursor: pointer;
@@ -102,6 +107,16 @@ $pd-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
     font-weight: bold;
     color: $pd-title-color;
     background-color: $pd-title-bg;
+}
+
+.pika-label.pika-month,
+.pika-label.pika-year{
+    padding: 0 3px;
+}
+
+.pika-title .year-month-wrapper {
+    display: flex;
+    align-items: center;
 }
 
 .pika-prev,
@@ -131,18 +146,6 @@ $pd-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
         cursor: default;
         opacity: .2;
     }
-}
-
-.pika-prev,
-.is-rtl .pika-next {
-    float: left;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAUklEQVR42u3VMQoAIBADQf8Pgj+OD9hG2CtONJB2ymQkKe0HbwAP0xucDiQWARITIDEBEnMgMQ8S8+AqBIl6kKgHiXqQqAeJepBo/z38J/U0uAHlaBkBl9I4GwAAAABJRU5ErkJggg==');
-}
-
-.pika-next,
-.is-rtl .pika-prev {
-    float: right;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAU0lEQVR42u3VOwoAMAgE0dwfAnNjU26bYkBCFGwfiL9VVWoO+BJ4Gf3gtsEKKoFBNTCoCAYVwaAiGNQGMUHMkjGbgjk2mIONuXo0nC8XnCf1JXgArVIZAQh5TKYAAAAASUVORK5CYII=');
 }
 
 .pika-select {

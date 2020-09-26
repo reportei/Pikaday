@@ -441,6 +441,14 @@
             prev = true,
             next = true;
 
+        if (c === 0) {
+            html += '<button class="pika-prev' + (prev ? '' : ' is-disabled') + '" type="button"> ' +
+                '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+                '<path class="stroke-current" d="M10.3996 12.8L5.59961 7.99995L10.3996 3.19995" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+                '</svg> ' +
+                '</button>';
+        }
+
         for (arr = [], i = 0; i < 12; i++) {
             arr.push('<option value="' + (year === refYear ? i - c : 12 + i - c) + '"' +
                 (i === month ? ' selected="selected"': '') +
@@ -448,7 +456,7 @@
                 opts.i18n.months[i] + '</option>');
         }
 
-        monthHtml = '<div class="pika-label">' + opts.i18n.months[month] + '<select class="pika-select pika-select-month" tabindex="-1">' + arr.join('') + '</select></div>';
+        monthHtml = '<div class="pika-label pika-month">' + opts.i18n.months[month] + '<select class="pika-select pika-select-month" tabindex="-1">' + arr.join('') + '</select></div>';
 
         if (isArray(opts.yearRange)) {
             i = opts.yearRange[0];
@@ -463,12 +471,13 @@
                 arr.push('<option value="' + i + '"' + (i === year ? ' selected="selected"': '') + '>' + (i) + '</option>');
             }
         }
-        yearHtml = '<div class="pika-label">' + year + opts.yearSuffix + '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select></div>';
+
+        yearHtml = '<div class="pika-label pika-year">' + year + opts.yearSuffix + '<select class="pika-select pika-select-year" tabindex="-1">' + arr.join('') + '</select></div>';
 
         if (opts.showMonthAfterYear) {
-            html += yearHtml + monthHtml;
+            html += '<div class="year-month-wrapper">' + yearHtml + monthHtml + '</div>';
         } else {
-            html += monthHtml + yearHtml;
+            html += '<div class="year-month-wrapper">' + monthHtml + yearHtml + '</div>';
         }
 
         if (isMinYear && (month === 0 || opts.minMonth >= month)) {
@@ -479,13 +488,7 @@
             next = false;
         }
 
-        if (c === 0) {
-            html += '<button class="pika-prev' + (prev ? '' : ' is-disabled') + '" type="button"> ' +
-                        '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-                            '<path class="stroke-current" d="M10.3996 12.8L5.59961 7.99995L10.3996 3.19995" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
-                        '</svg> ' +
-                '</button>';
-        }
+
         if (c === (instance._o.numberOfMonths - 1) ) {
             html += '<button class="pika-next' + (next ? '' : ' is-disabled') + '" type="button">' +
                         '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
