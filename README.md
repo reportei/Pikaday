@@ -140,7 +140,13 @@ var picker = new Pikaday({
 
 As the examples demonstrate above
 Pikaday has many useful options:
-
+---
+Added configurations:
+* `gotoTodayButton` adds a new button at the end that sets the current date to today using `piker.setDate(new Date())` function (default to `false`)
+* `gotoTodayButtonText` the text should be displayed on the `gotoTodayButton` button if it is being shown (default to `Today`)
+* `clearDateButton` adds a new button at the end that sets the current date to empty (default to `false`)
+* `clearDateButtonText` the text should be displayed on the `clearDateButton` button if it is being shown (default to `Clear`)
+---
 * `field` bind the datepicker to a form field
 * `trigger` use a different element to trigger opening the datepicker, see [trigger example][] (default to `field`)
 * `bound` automatically show/hide the datepicker on `field` focus (default `true` if `field` is set)

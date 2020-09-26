@@ -244,3 +244,7 @@ svg {
     display: block;
     vertical-align: middle;
 }
+
+.pika-footer {
+    margin-top: 10px;
+}

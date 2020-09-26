@@ -309,7 +309,13 @@
         onDraw: null,
 
         // Enable keyboard input
-        keyboardInput: true
+        keyboardInput: true,
+
+        gotoTodayButton: false,
+        gotoTodayButtonText: 'Today',
+
+        clearDateButton: false,
+        clearDateButtonText: 'Clear',
     },
 
 
@@ -429,6 +435,19 @@
         return '<thead><tr>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</tr></thead>';
     },
 
+    renderFooter = function (opts)
+    {
+        var html = '<div class="pika-footer"> ';
+
+        if (opts.gotoTodayButton) {
+            html += '<button class="pika-today-button">' + opts.gotoTodayButtonText + '</button>';
+        }
+
+        html += ' </div>';
+
+        return html;
+    },
+
     renderTitle = function(instance, c, year, month, refYear, randId)
     {
         var i, j, arr,
@@ -502,7 +521,7 @@
 
     renderTable = function(opts, data, randId)
     {
-        return '<table cellpadding="0" cellspacing="0" class="pika-table" role="grid" aria-labelledby="' + randId + '">' + renderHead(opts) + renderBody(data) + '</table>';
+        return '<table cellpadding="0" cellspacing="0" class="pika-table" role="grid" aria-labelledby="' + randId + '">' + renderHead(opts) + renderBody(data) + '</table>' + renderFooter(opts);
     },
 
 
@@ -533,7 +552,6 @@
             if (! target) {
                 return;
             }
-
             if (!hasClass(target, 'is-disabled')) {
                 if (hasClass(target, 'pika-button') && !hasClass(target, 'is-empty') && !hasClass(target.parentNode, 'is-disabled')) {
                     self.setDate(new Date(target.getAttribute('data-pika-year'), target.getAttribute('data-pika-month'), target.getAttribute('data-pika-day')));
@@ -551,6 +569,8 @@
                 }
                 else if (hasClass(target, 'pika-next')) {
                     self.nextMonth();
+                } else if(hasClass(target, 'pika-today-button')) {
+                    self.setDate(new Date());
                 }
             }
             if (!hasClass(target, 'pika-select')) {
@@ -1263,6 +1283,7 @@
                     isWeekSelected = false;
                 }
             }
+
             return renderTable(opts, data, randId);
         },
 
