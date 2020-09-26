@@ -254,3 +254,12 @@ $pd-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
     box-shadow: none;
     border-radius: 3px;
 }
+
+.stroke-current {
+    stroke: currentColor;
+}
+
+svg {
+    display: block;
+    vertical-align: middle;
+}
