@@ -69,6 +69,17 @@
         return (' ' + el.className + ' ').indexOf(' ' + cn + ' ') !== -1;
     },
 
+    hideElement = function(opts, self) {
+        if (opts.bound) {
+            sto(function () {
+                self.hide();
+                if (opts.blurFieldOnSelect && opts.field) {
+                    opts.field.blur();
+                }
+            }, 100);
+        }
+    },
+
     /**
      * Recursively climbs the document tree until we find a the parent of the given element that has the given tag name.
      * This is used when listening for clicks on elements that are inside a button for example.
@@ -559,14 +570,7 @@
             if (!hasClass(target, 'is-disabled')) {
                 if (hasClass(target, 'pika-button') && !hasClass(target, 'is-empty') && !hasClass(target.parentNode, 'is-disabled')) {
                     self.setDate(new Date(target.getAttribute('data-pika-year'), target.getAttribute('data-pika-month'), target.getAttribute('data-pika-day')));
-                    if (opts.bound) {
-                        sto(function() {
-                            self.hide();
-                            if (opts.blurFieldOnSelect && opts.field) {
-                                opts.field.blur();
-                            }
-                        }, 100);
-                    }
+                    hideElement(opts, self);
                 }
                 else if (hasClass(target, 'pika-prev')) {
                     self.prevMonth();
@@ -575,8 +579,10 @@
                     self.nextMonth();
                 } else if(hasClass(target, 'pika-goto-today-button')) {
                     self.setDate(new Date());
+                    hideElement(opts, self);
                 } else if (hasClass(target, 'pika-clear-date-button')) {
                     self.clear();
+                    hideElement(opts, self);
                 }
             }
             if (!hasClass(target, 'pika-select')) {
