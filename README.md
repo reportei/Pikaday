@@ -144,7 +144,7 @@ Pikaday has many useful options:
 Added configurations:
 * `gotoTodayButton` adds a new button at the end that sets the current date to today using `piker.setDate(new Date())` function (default to `false`)
 * `gotoTodayButtonText` the text should be displayed on the `gotoTodayButton` button if it is being shown (default to `Today`)
-* `clearDateButton` adds a new button at the end that sets the current date to empty (default to `false`)
+* `clearDateButton` adds a new button at the end that sets the current date to empty using `piker.clear()` function  (default to `false`)
 * `clearDateButtonText` the text should be displayed on the `clearDateButton` button if it is being shown (default to `Clear`)
 ---
 * `field` bind the datepicker to a form field

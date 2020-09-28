@@ -440,7 +440,11 @@
         var html = '<div class="pika-footer"> ';
 
         if (opts.gotoTodayButton) {
-            html += '<button class="pika-today-button">' + opts.gotoTodayButtonText + '</button>';
+            html += '<button class="pika-goto-today-button">' + opts.gotoTodayButtonText + '</button>';
+        }
+
+        if (opts.clearDateButton) {
+            html += '<button class="pika-clear-date-button">' + opts.clearDateButtonText + '</button>';
         }
 
         html += ' </div>';
@@ -569,8 +573,10 @@
                 }
                 else if (hasClass(target, 'pika-next')) {
                     self.nextMonth();
-                } else if(hasClass(target, 'pika-today-button')) {
+                } else if(hasClass(target, 'pika-goto-today-button')) {
                     self.setDate(new Date());
+                } else if (hasClass(target, 'pika-clear-date-button')) {
+                    self.clear();
                 }
             }
             if (!hasClass(target, 'pika-select')) {
