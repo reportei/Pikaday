@@ -467,7 +467,7 @@
         if (c === 0) {
             html += '<button class="pika-prev' + (prev ? '' : ' is-disabled') + '" type="button"> ' +
                 '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-                '<path class="stroke-current" d="M10.3996 12.8L5.59961 7.99995L10.3996 3.19995" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+                '<path class="stroke-current-color" d="M10.3996 12.8L5.59961 7.99995L10.3996 3.19995" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
                 '</svg> ' +
                 '</button>';
         }
@@ -515,7 +515,7 @@
         if (c === (instance._o.numberOfMonths - 1) ) {
             html += '<button class="pika-next' + (next ? '' : ' is-disabled') + '" type="button">' +
                         '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-                            '<path class="stroke-current" d="M5.59998 12.8L10.4 7.99995L5.59998 3.19995" stroke="#0054C2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+                            '<path class="stroke-current-color" d="M5.59998 12.8L10.4 7.99995L5.59998 3.19995" stroke="#0054C2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
                         '</svg>' +
                 '</button>';
         }
