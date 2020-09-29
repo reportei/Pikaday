@@ -355,7 +355,7 @@
                 }
 
             } else {
-                return '<td class="is-empty"></td>';
+                return '<div class="td is-empty"></div>';
             }
         }
         if (opts.isDisabled) {
@@ -380,12 +380,12 @@
         if (opts.isEndRange) {
             arr.push('is-endrange');
         }
-        return '<td data-day="' + opts.day + '" class="' + arr.join(' ') + '" aria-selected="' + ariaSelected + '">' +
+        return '<div data-day="' + opts.day + '" class="td ' + arr.join(' ') + '" aria-selected="' + ariaSelected + '">' +
                  '<button class="pika-button pika-day" type="button" ' +
                     'data-pika-year="' + opts.year + '" data-pika-month="' + opts.month + '" data-pika-day="' + opts.day + '">' +
                         opts.day +
                  '</button>' +
-               '</td>';
+               '</div>';
     },
 
     isoWeek = function(date) {
@@ -421,29 +421,29 @@
           , week = hasMoment ? moment(date).isoWeek() : isoWeek(date)
         ;
 
-        return '<td class="pika-week">' + week + '</td>';
+        return '<div class="td pika-week">' + week + '</div>';
     },
 
     renderRow = function(days, isRTL, pickWholeWeek, isRowSelected)
     {
-        return '<tr class="pika-row' + (pickWholeWeek ? ' pick-whole-week' : '') + (isRowSelected ? ' is-selected' : '') + '">' + (isRTL ? days.reverse() : days).join('') + '</tr>';
+        return '<div class="tr pika-row' + (pickWholeWeek ? ' pick-whole-week' : '') + (isRowSelected ? ' is-selected' : '') + '">' + (isRTL ? days.reverse() : days).join('') + '</div>';
     },
 
     renderBody = function(rows)
     {
-        return '<tbody>' + rows.join('') + '</tbody>';
+        return '<div class="tbody">' + rows.join('') + '</div>';
     },
 
     renderHead = function(opts)
     {
         var i, arr = [];
         if (opts.showWeekNumber) {
-            arr.push('<th></th>');
+            arr.push('<div class="th"></div>');
         }
         for (i = 0; i < 7; i++) {
-            arr.push('<th scope="col"><abbr title="' + renderDayName(opts, i) + '">' + renderDayName(opts, i, true) + '</abbr></th>');
+            arr.push('<div class="th"><abbr title="' + renderDayName(opts, i) + '">' + renderDayName(opts, i, true) + '</abbr></div>');
         }
-        return '<thead><tr>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</tr></thead>';
+        return '<div class="thead"><div class="tr">' + (opts.isRTL ? arr.reverse() : arr).join('') + '</div></div>';
     },
 
     renderFooter = function (opts)
@@ -536,7 +536,7 @@
 
     renderTable = function(opts, data, randId)
     {
-        return '<table cellpadding="0" cellspacing="0" class="pika-table" role="grid" aria-labelledby="' + randId + '">' + renderHead(opts) + renderBody(data) + '</table>' + renderFooter(opts);
+        return '<div class="table pika-table" role="grid" aria-labelledby="' + randId + '">' + renderHead(opts) + renderBody(data) + '</div>' + renderFooter(opts);
     },
 
 

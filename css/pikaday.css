@@ -16,6 +16,32 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.table {
+    display: flex;
+    flex-direction: column;
+}
+
+.table .thead .tr {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.table .tbody {
+    display: flex;
+    flex-direction: column;
+}
+
+.table .tbody .tr {
+    display: flex;
+    flex: 1 1 0;
+}
+
+.table .tbody .tr .td {
+    flex: 1 1 0;
+}
+
 /*
 clear child float (pika-lendar), using the famous micro clearfix hack
 http://nicolasgallagher.com/micro-clearfix-hack/
