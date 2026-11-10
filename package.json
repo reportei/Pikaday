@@ -1,6 +1,6 @@
 {
-  "name": "pikaday",
-  "version": "1.8.0",
+  "name": "reportei-pikaday",
+  "version": "1.8.1",
   "description": "A refreshing JavaScript Datepicker — lightweight, no dependencies, modular CSS",
   "keywords": [
     "datepicker",
@@ -10,6 +10,13 @@
   "homepage": "https://reportei.com",
   "license": "(0BSD OR MIT)",
   "main": "pikaday.js",
+  "files": [
+    "pikaday.js",
+    "css",
+    "scss",
+    "plugins",
+    "CHANGELOG.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/reportei/Pikaday.git"
@@ -34,10 +41,5 @@
   "scripts": {
     "test": "testling",
     "lint": "jshint *.js plugins/*.js tests/*.js"
-  },
-  "dependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0"
   }
 }
